@@ -17,32 +17,31 @@ const BookList = (props) => {
   const handleFilterChange = props.changeFilter
   return (
     <div>
-      <CategoryFilter handleFilterChange={handleFilterChange} />
-      <table>
-        <thead>
-          <tr>
-            <th>
-              title
-          </th>
-            <th>
-              categorie
-          </th>
-            <th>
-              action
-          </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredBooks.map((book, index) =>
-            <Book
-              key={index}
-              book={book}
-              handleRemoveBook={handleRemoveBook}
-            />
+      <div className='header'>
+        <div className='container'>
+          <span className='logo'>Bookstore CMS</span>
+          <span className='categories'>Books</span>
+          <span className='cat'><CategoryFilter handleFilterChange={handleFilterChange} /></span>
+        </div>
+        <div className='oval'>
+          <div className='mask'><i className="fa fa-user"></i></div>
+        </div>
+      </div>
+      <div className='wrapper'>
+        <table className='table'>
 
-          )}
-        </tbody>
-      </table>
+          <tbody>
+            {filteredBooks.map((book, index) =>
+              <Book
+                key={index}
+                book={book}
+                handleRemoveBook={handleRemoveBook}
+              />
+
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

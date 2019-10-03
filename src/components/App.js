@@ -14,7 +14,9 @@ class App extends React.Component {
     return (
       <div>
         <BookList books={books} />
-        <BooksForm />
+        <div className='wrapper'>
+          <BooksForm />
+        </div>
       </div>
     );
   }

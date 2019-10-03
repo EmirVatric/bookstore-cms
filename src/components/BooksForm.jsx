@@ -42,19 +42,22 @@ class BooksForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='form'>
         <input
+          className='input'
+          placeholder='Book title'
           type="text"
           onChange={(e) => this.handleChange({ title: e.target })}
           value={this.state.title}
         />
         <select
+          className='formSelect'
           onChange={(e) => this.handleChange({ categorie: e.target })}
           value={this.state.categorie}
         >
           {categories.map((categorie) => <option key={categorie}>{categorie}</option>)}
         </select>
-        <input type="submit" value='Add book' onClick={() => this.handleSubmit()} />
+        <input className='button2' type="submit" value='Add book' onClick={() => this.handleSubmit()} />
       </div>
     );
   }
