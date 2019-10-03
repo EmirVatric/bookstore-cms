@@ -3,7 +3,6 @@ import './App.css';
 import BookList from './BookList'
 import BooksForm from './BooksForm'
 import { connect } from 'react-redux'
-import { CREATE_BOOK, REMOVE_BOOK } from '../actions'
 
 class App extends React.Component {
   constructor(props) {
@@ -27,12 +26,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addBook: (book) => { dispatch(CREATE_BOOK(book)) },
-    removeBook: (book) => { dispatch(REMOVE_BOOK(book)) }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, null)(App)
 

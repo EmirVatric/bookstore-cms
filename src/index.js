@@ -5,7 +5,7 @@ import App from './components/App'; // eslint-disable-line no-unused-vars
 import { createStore } from 'redux'
 import { reducer } from './reducers'
 import { CREATE_BOOK } from './actions'
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux'// eslint-disable-line no-unused-vars
 
 const books = [
   {

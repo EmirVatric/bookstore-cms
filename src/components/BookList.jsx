@@ -1,5 +1,5 @@
-import React from 'react';
-import Book from './Book'
+import React from 'react'; // eslint-disable-line no-unused-vars
+import Book from './Book'; // eslint-disable-line no-unused-vars
 
 const BookList = (props) => {
   const { books } = props

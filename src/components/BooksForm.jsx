@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 const categories = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"]
 
-const BooksForm = (props) => {
+const BooksForm = () => {
   return (
     <div>
       <input type="text" name='bookTitle' />
@@ -11,5 +11,6 @@ const BooksForm = (props) => {
     </div>
   );
 }
+
 
 export default BooksForm;
