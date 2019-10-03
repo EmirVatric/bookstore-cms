@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import Book from './Book'; // eslint-disable-line no-unused-vars
-import CategoryFilter from './CategoryFilter'
+import CategoryFilter from './CategoryFilter' // eslint-disable-line no-unused-vars
 import { REMOVE_BOOK, CHANGE_FILTER } from '../actions'
 import { connect } from 'react-redux'
 
