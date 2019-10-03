@@ -1,10 +1,11 @@
 import React from 'react';// eslint-disable-line no-unused-vars
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-
+      <BookList />
+      <BooksForm />
     </div>
   );
 }
