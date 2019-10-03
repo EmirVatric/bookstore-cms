@@ -1,8 +1,8 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { CREATE_BOOK } from '../actions'
 import { connect } from 'react-redux'
+import { categories } from '../constants'
 
-const categories = ["Action", "Biography", "History", "Horror", "Kids", "Learning", "Sci-Fi"]
 
 class BooksForm extends React.Component {
   constructor(props) {

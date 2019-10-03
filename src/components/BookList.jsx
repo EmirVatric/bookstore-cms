@@ -1,42 +1,63 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import Book from './Book'; // eslint-disable-line no-unused-vars
-import { REMOVE_BOOK } from '../actions'
+import CategoryFilter from './CategoryFilter'
+import { REMOVE_BOOK, CHANGE_FILTER } from '../actions'
 import { connect } from 'react-redux'
 
 const BookList = (props) => {
   const { books } = props
+  const filteredBooks = books.filter((book) => {
+    if (props.filter === '') {
+      return true
+    } else {
+      return props.filter === book.categorie
+    }
+  })
   const handleRemoveBook = props.removeBook
+  const handleFilterChange = props.changeFilter
   return (
     <div>
+      <CategoryFilter handleFilterChange={handleFilterChange} />
       <table>
-        <tr>
-          <th>
-            title
+        <thead>
+          <tr>
+            <th>
+              title
           </th>
-          <th>
-            categorie
+            <th>
+              categorie
           </th>
-          <th>
-            action
+            <th>
+              action
           </th>
-        </tr>
-        {books.map((book) =>
-          <Book
-            book={book}
-            handleRemoveBook={handleRemoveBook}
-          />
+          </tr>
+        </thead>
+        <tbody>
+          {filteredBooks.map((book, index) =>
+            <Book
+              key={index}
+              book={book}
+              handleRemoveBook={handleRemoveBook}
+            />
 
-        )}
+          )}
+        </tbody>
       </table>
     </div>
   );
 }
 
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    removeBook: (book) => dispatch(REMOVE_BOOK(book))
+    filter: state.filter
   }
 }
 
-export default connect(null, mapDispatchToProps)(BookList)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeBook: (book) => dispatch(REMOVE_BOOK(book)),
+    changeFilter: (filter) => dispatch(CHANGE_FILTER(filter))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList)
