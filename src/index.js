@@ -2,32 +2,35 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App'; // eslint-disable-line no-unused-vars
-import {createStore} from 'redux'
-import {reducer} from './reducers'
-import {CREATE_BOOK,REMOVE_BOOK} from './actions'
+import { createStore } from 'redux'
+import { reducer } from './reducers'
+import { CREATE_BOOK } from './actions'
+import { Provider } from 'react-redux'
 
-const books=[
+const books = [
   {
-    id:Math.floor(Math.random()*100),
-    title:'book1',
-    categorie:"Action"
+    id: Math.floor(Math.random() * 100),
+    title: 'book1',
+    categorie: "Action"
   },
   {
-    id:Math.floor(Math.random()*100),
-    title:'book2',
-    categorie:"Biography"
+    id: Math.floor(Math.random() * 100),
+    title: 'book2',
+    categorie: "Biography"
   },
   {
-    id:Math.floor(Math.random()*100),
-    title:'book3',
-    categorie:"History"
+    id: Math.floor(Math.random() * 100),
+    title: 'book3',
+    categorie: "History"
   }
 ]
 
 
-const store=createStore(reducer)
-books.forEach((book)=>store.dispatch(CREATE_BOOK(book)))
-store.dispatch(REMOVE_BOOK(books[1]))
-console.log(store.getState())
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(reducer)
+books.forEach((book) => store.dispatch(CREATE_BOOK(book)))
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, document.getElementById('root'));
 
