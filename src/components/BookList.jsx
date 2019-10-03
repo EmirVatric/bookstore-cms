@@ -1,16 +1,42 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import Book from './Book'; // eslint-disable-line no-unused-vars
+import { REMOVE_BOOK } from '../actions'
+import { connect } from 'react-redux'
 
 const BookList = (props) => {
   const { books } = props
-
+  const handleRemoveBook = props.removeBook
   return (
     <div>
-      <ul>
-        {books.map((book) => <li key={book.id}><Book book={book} /></li>)}
-      </ul>
+      <table>
+        <tr>
+          <th>
+            title
+          </th>
+          <th>
+            categorie
+          </th>
+          <th>
+            action
+          </th>
+        </tr>
+        {books.map((book) =>
+          <Book
+            book={book}
+            handleRemoveBook={handleRemoveBook}
+          />
+
+        )}
+      </table>
     </div>
   );
 }
 
-export default BookList;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeBook: (book) => dispatch(REMOVE_BOOK(book))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(BookList)
