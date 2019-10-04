@@ -6,13 +6,6 @@ import { connect } from 'react-redux'
 
 const BookList = (props) => {
   const { books } = props
-  const filteredBooks = books.filter((book) => {
-    if (props.filter === '') {
-      return true
-    } else {
-      return props.filter === book.categorie
-    }
-  })
   const handleRemoveBook = props.removeBook
   const handleFilterChange = props.changeFilter
   return (
@@ -29,34 +22,36 @@ const BookList = (props) => {
       </div>
       <div className='wrapper'>
         <table className='table'>
-
-          <tbody>
-            {filteredBooks.map((book, index) =>
-              <Book
-                key={index}
-                book={book}
-                handleRemoveBook={handleRemoveBook}
-              />
-
-            )}
-          </tbody>
+            <tbody>
+              {books.map((book, index) =>
+                <Book
+                  key={index}
+                  book={book}
+                  handleRemoveBook={handleRemoveBook}
+                />)
+              }
+            </tbody>
         </table>
       </div>
-    </div>
-  );
-}
-
+      </div>
+      );
+    }
+    
 const mapStateToProps = (state) => {
-  return {
-    filter: state.filter
-  }
-}
-
+        let {books,filter}=state;
+  if(filter!==''){
+        books = books.filter((book) => filter === book.categorie)
+      }
+      return {
+        books
+      }
+      }
+      
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeBook: (book) => dispatch(REMOVE_BOOK(book)),
-    changeFilter: (filter) => dispatch(CHANGE_FILTER(filter))
+        removeBook: (book) => dispatch(REMOVE_BOOK(book)),
+      changeFilter: (filter) => dispatch(CHANGE_FILTER(filter))
+    }
   }
-}
-
+  
 export default connect(mapStateToProps, mapDispatchToProps)(BookList)

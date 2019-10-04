@@ -12,13 +12,8 @@ class BooksForm extends React.Component {
       categorie: categories[0]
     }
   }
-  handleChange({ title, categorie }) {
-    if (title) {
-      this.setState({ title: title.value })
-    }
-    if (categorie) {
-      this.setState({ categorie: categorie.value })
-    }
+  handleChange(event) {
+      this.setState({ [event.target.name]: event.target.value })
   }
   handleSubmit() {
     let { title, categorie } = this.state
@@ -47,12 +42,14 @@ class BooksForm extends React.Component {
           className='input'
           placeholder='Book title'
           type="text"
-          onChange={(e) => this.handleChange({ title: e.target })}
+          name="title"
+          onChange={(e) => this.handleChange(e)}
           value={this.state.title}
         />
         <select
           className='formSelect'
-          onChange={(e) => this.handleChange({ categorie: e.target })}
+          name="categorie"
+          onChange={(e) => this.handleChange(e)}
           value={this.state.categorie}
         >
           {categories.map((categorie) => <option key={categorie}>{categorie}</option>)}
