@@ -9,24 +9,29 @@ const BookList = (props) => {
   return (
     <div>
       <table>
-        <tr>
-          <th>
-            title
+        <thead>
+          <tr>
+            <th>
+              title
           </th>
-          <th>
-            categorie
+            <th>
+              categorie
           </th>
-          <th>
-            action
+            <th>
+              action
           </th>
-        </tr>
-        {books.map((book) =>
-          <Book
-            book={book}
-            handleRemoveBook={handleRemoveBook}
-          />
+          </tr>
+        </thead>
+        <tbody>
+          {books.map((book, index) =>
+            <Book
+              key={index}
+              book={book}
+              handleRemoveBook={handleRemoveBook}
+            />
 
-        )}
+          )}
+        </tbody>
       </table>
     </div>
   );
