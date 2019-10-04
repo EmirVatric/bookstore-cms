@@ -6,13 +6,6 @@ import { connect } from 'react-redux'
 
 const BookList = (props) => {
   const { books } = props
-  const filteredBooks = books.filter((book) => {
-    if (props.filter === '') {
-      return true
-    } else {
-      return props.filter === book.categorie
-    }
-  })
   const handleRemoveBook = props.removeBook
   const handleFilterChange = props.changeFilter
   return (
@@ -33,7 +26,7 @@ const BookList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {filteredBooks.map((book, index) =>
+          {books.map((book, index) =>
             <Book
               key={index}
               book={book}
@@ -48,9 +41,12 @@ const BookList = (props) => {
 }
 
 const mapStateToProps = (state) => {
+  let {books,filter}=state;
+  if(filter!==''){
+    books = books.filter((book) => filter === book.categorie)
+  }
   return {
-    books: state.books,
-    filter: state.filter
+    books
   }
 }
 
