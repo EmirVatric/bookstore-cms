@@ -31,7 +31,11 @@ const BookList = (props) => {
     </div>
   );
 }
-
+const mapStateToProps = (state) => {
+  return {
+    books: state.books
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -39,4 +43,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(BookList)
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookList)
